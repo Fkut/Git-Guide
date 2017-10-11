@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>git - the simple guide - no deep shit!</title>
+    <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/0/normalize.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-652147-13']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+        function recordOutboundLink(link, category, action) {
+            _gat._getTrackerByName()._trackEvent(category, action);
+            setTimeout('document.location = "' + link.href + '"', 100);
+        }
+    </script>
+</head>
+<body>
+<div class="scrollblock block-title">
+    <h1>git - the simple guide</h1>
+    <p>git-ի հետ աշխատելու պարզ ուղեցույց. Ոչինչ բարդ չէ ;)</p>
+
+    <p class="meta">
+
+        <a href="index.html">english</a>,
+        <a href="index.ru.html">русский</a>,
+        <br/>
+        Սխալների մասին տեղեկացրեք <a href="https://github.com/rogerdudler/git-guide/issues">github֊ում</a>
+    </p>
+    <img src="img/arrow.png" alt=""/>
+</div>
+<!-- setup -->
+<a name="setup"></a>
+<div class="scrollblock block-setup">
+    <h2>Տեղակայում (setup)</h2>
+    <p>
+        <a href="https://book.git-scm.com/download/mac">Ներբեռնել git֊ը OSX֊ի համար</a>
+    </p>
+    <p>
+        <a href="https://book.git-scm.com/download/win">Ներբեռնել git֊ը Windows֊ի համար</a>
+    </p>
+    <p>
+        <a href="https://book.git-scm.com/download/linux">Ներբեռնել git֊ը Linux֊ի համար</a>
+    </p>
+</div>
+<a name="create"></a>
+<div class="scrollblock block-create">
+    <h2>Նոր պահոցի (repository) ստեղծում</h2>
+    <p>
+        Նոր git պահոց ստեղծելու համար, անհրաժեշտ է բացել այն պանակը,
+        որտեղ ցանկանում եք տեղադրել և իրագործել հետևյալ հրամաանը<br/>
+        <code>git init</code><br/>
+
+    </p>
+</div>
+<a name="checkout"></a>
+<div class="scrollblock block-checkout">
+    <h2>Ստանալ պահոց (repository)</h2>
+    <p>
+        Պահոցի լոկալ աշխատանքային պատճե կարող ենք ստեղծել հետևյալ հրամանով՝ <br/>
+        <code>git clone /պահոցի/հասցե</code><br/>
+        Հեռավոր սերվերի օգտագործման դեպքում հրամանը կլինի<br/>
+        <code>git clone username@host:/պահոցի/հասցե</code>
+    </p>
+</div>
+<a name="trees"></a>
+<div class="scrollblock block-trees">
+    <h2>Աշխատանքային պրոցես</h2>
+    <p>
+        Ձեր լոկալ git պահոցը բաղկացած է երեք «մասից»
+        <code>Աշխատանքային կատալոգ</code> (Working Directory) պարունակում է բոլոր աշխատանքային ֆայլերը.
+        <code>Ինդեքս</code> (Index) կամ «պատրաստի» ֆայլերի տարածք (Staging Area)</code>,
+        պարունակում է տեղեկատվություն այն մասին, թե ինչ ֆայլեր ենք commit անելու և
+        <code>HEAD</code> ցույց է տալիս ձեր վերջին արված commit֊ը.
+    </p>
+    <img src="img/trees.png" alt=""/>
+</div>
+<a name="add"></a>
+<div class="scrollblock block-add">
+    <h2>Նախապատրաստում և commit</h2>
+    <p>
+
+        Որպեսզի նախապատրաստենք փոփոխությունները (ավելացնենք նրանց <b>Индекс</b>-ում) կօգտագործենք
+        <br/>
+        <code>git add &lt;ֆայլի անուն&gt;</code><br/>
+        <code>git add *</code><br/>
+        Սա աշխատանքային պրոցեսի առաջին քայլն է. Կատարված փոփոխությունները կարելի է commit անել<br/>
+        <code>git commit -m "commit֊ի նկարագրություն "</code> հրամանով<br/>
+        Փոփոխությունները կատարվել են լոկալ պահոցում և դրանց վրա «ցույց է տալիս» <b>HEAD</b>, բայց դեռևս չեն կատարվել հեռավոր պահոցում.
+    </p>
+</div>
+<a name="push"></a>
+<div class="scrollblock block-remote">
+    <h2>Փոփոխությունների ուղարկում</h2>
+    <p>
+        Որպեսզի կատարեք փոփոխությունները հեռավոր պահոցում, իրագործեք հետևյալ հրամանը<br/>
+        <code>git push origin master</code><br/>
+        Դուք կարող եք փոփոխել <i>master</i>֊ին  ցանկացած ճյուղով (branch), որպեսզի ուղարկեք փոփոխությունները այնտեղ։
+        <br/><br/>
+        Եթե դեռ չեք պատճենել գոյություն ունեցող «պահոցը» (repository) և ցանկանում եք միանալ հեռացոր պահոցի, անհրաժեշտ է իրագործել հետևյալ հրամանը<br/>
+        <code>git remote add origin &lt;սերվերի հասցե&gt;</code><br/>
+        Հիմա արդեն կարող եք ուղարկել փոփոխությունները հեռավոր «պահոց»<br/>
+
+    </p>
+</div>
+<a name="branching"></a>
+<div class="scrollblock block-branching">
+    <h2>«Ճյուղավորում» (Branching)</h2>
+    <p>
+        Ճյուղերը օգտագործվում են ֆունկցիոնալության զարգացման համար, մնացաց ճյուղերից առանձնացված։
+         <i>master</i> ճյուղը օգտագործվում է լռությամբ,
+        անմիջապես պահոց ստեղծելու ժամանակ։
+        Օգտագործեք այլ ճյուղեր զարգացման համար և «կպցրեք» <i>master</i>֊ին, երբ զարգացումն ավարտված է։
+    </p>
+    <img src="img/branches.png" alt=""/>
+    <p>
+        "feature_x" անունով ճյուղ սարքելու և նրան միանալու համար անհրաժեշտ է
+        <code>git checkout -b feature_x </code> հրամանը<br/>
+        <i>master</i>֊ին հետ միանալու համար անհրաժեշտ է <br/>
+        <code>git checkout master </code> հրամանը<br/>
+        ճյուղը կարելի է ջնջել<br/>
+        <code>git branch -d feature_x </code> հրամանով<br/>
+        Ճյուղը հասանելի չի նրանց, ովքեր աշխատում են ձեր հետ հեռավոր պահոցի վրա, քանի դեռ այն չեք ուղարկել պահոց<br/>
+        <code>git push origin &lt;ճյուղի անուն&gt;</code>
+    </p>
+</div>
+<a name="update"></a>
+<div class="scrollblock block-merging">
+    <h2>Թարմացում և միավորում</h2>
+    <p>
+        Ձեր լոկալ պահոցը կարող եք թարմացնել հետևյալ հրամանով՝<br/>
+        <code>git pull</code><br/>
+        որը «վերցնում է» հեռավոր պահոցի փոփոխությունները և միավորում այն տվյալ պահին ակտիվ ճյուղի հետ<br/>
+        Որպեսզի միավորեք փոփոխությունները այլ ճյուղի հետ (օրինակ master), օգտագործեք հետրյալ<br/>
+        <code>git merge &lt;ճյուղի անուն&gt;</code> հրամանը<br/>
+        Երկու դեպքում էլ git֊ը փորձում է ավտոմատ կերպով կատարել փոփոխությունները։ Ցավոք որ միշտ է այն հնարավոր և արդյունքում <i>կոնֆլիկտ</i> էառաջանում։
+        Դուք պատասխանատու եք առաջացած <i>կոնֆլիկտ</i>֊ների համար։ Անհրաժեշտ է ձեռքով խմբագրել git֊ի նշված ֆայլերը։ Փոփոխություններից հետո
+        դուք պետք է միավորել իրար հետ ֆայլերը<br/>
+        <code>git add &lt;ֆայլի_անուն&gt;</code><br/>
+        մինչև միավորելը դուք կարող եք դիտել փոփոխությունները <br/>
+        <code>git diff &lt;ճյուղի_անուն&gt; &lt;մյուս_ճյուղի անուն&gt;</code>
+    </p>
+</div>
+<a name="tagging"></a>
+<div class="scrollblock block-tagging">
+    <h2>Պիտակներ (tagging)</h2>
+    <p>
+
+        Խորհուրդ է տրվում օգտագործել պիտակներ, որոնք կապված են տվյալ պահին օգտագործվող վերսիայի հետ։
+        <i>1.0.0</i> անունով պիտակ կարելի է ստեղծել հետևյալ հրամանով`
+        <code>git tag 1.0.0 1b2e1d63ff</code><br/>
+        <i>1b2e1d63ff</i> սրանք առաջին 10֊ը նիշն են այն ինդենտիֆիկատորի(id), որ կապված է պիտակի հետ. Որպեսզի տեսնեք commit-ների
+        ինդենտիֆիկատորները, օգագործեք <br/>
+        <code>git log</code> հրամանը<br/>
+        Կարելի է օգտագործել ավելի քիչ քանակի սիմվոլներ id֊ի համար, ուղղակի պետք է հաշվել , որ այն միակնն է։
+    </p>
+</div>
+<a name="checkout-replace"></a>
+<div class="scrollblock block-checkout-replace">
+    <h2>Լոկալ փոփոխությունների փոխարինում</h2>
+    <p>
+        Եթե դուք ինչ֊որ բան այնպես չեք արել, կարող եք փոխարինել լոկալ փոփոխությունները հետևյալ հրամանով<br/>
+        <code>git checkout -- &lt;ֆայլի_անուն&gt;</code><br/>
+        հրամանը փոխարինում է այն աշխատանքային կատալոգի այն փոփոխությունները փոփոխությունները, որոնք գտնվում են HEAD֊ում։
+        Փոփոխություններրը, արդեն գտնվում են Index֊ում։
+    </p>
+    <p>
+        Եթե ցանկանում եք ջնջել ձեր բոլոր լոկալ փոփոխությունները և commit֊ները, ստացեք (fetch) բոլոր փոփոխությունները սերվերից և
+        նշեք լոկալ ճյուղը master, այ այսպես։<br/>
+        <code>git fetch origin</code><br/>
+        <code>git reset --hard origin/master</code>
+    </p>
+</div>
+<a name="hints"></a>
+<div class="scrollblock block-hints">
+    <h2>tweaks և հարմարավետ հրամաններ</h2>
+    <p>
+        git֊ի ներկառուցված գրաֆիկական ինտերֆեյս<br/>
+        <code>gitk</code><br/>
+        օգտագործեք գունավոր սիմվոլներ տերմինալում<br/>
+        <code>git config color.ui true</code><br/>
+        commit֊ը մուտքագրել մի տողով<br/>
+        <code>git config format.pretty oneline</code><br/>
+        Index֊ին ավելացնելու ինտերակտիվ միջոց<br/>
+        <code>git add -i</code>
+    </p>
+</div>
+<a name="resources"></a>
+<div class="scrollblock block-resources">
+    <h2>Օգտակար հղումներ</h2>
+    <p>
+    <ul>
+        <li><a href="http://book.git-scm.com/">Git Community Book</a></li>
+        <li><a href="http://progit.org/book/ru/">Pro Git</a></li>
+        <li><a href="http://think-like-a-git.net/">Think like a git</a></li>
+        <li><a href="http://help.github.com/">GitHub Help</a></li>
+        <li><a href="http://marklodato.github.com/visual-git-guide/index-en.html">A Visual Git Guide</a></li>
+    </ul>
+    </p>
+</div>
+<a href="files/git_cheat_sheet.pdf" onClick="recordOutboundLink(this, 'Cheat Sheet', 'git-guide');return false;"
+   class="cheatsheet"></a>
+</body>
+</html>
